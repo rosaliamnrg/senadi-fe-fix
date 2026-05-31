@@ -11,10 +11,10 @@ export default function Login() {
   const [error, setError] = useState('');
   const { login } = useAuth();
   
-  const handleGoogleSuccess = async (credentialResgponse) => {
+  const handleGoogleSuccess = async (credentialResponse) => {
     try {
       // Send token to backend
-      const res = await fetch('http://localhost:5000/api/auth/google', {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/google`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ credential: credentialResponse.credential }),
