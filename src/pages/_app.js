@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
     <>
       <Head>
         <link rel="icon" href="/images/favicon.ico" />
-        <title>Chatbot Susenas</title>
+        <title>Tanya Bung Itung</title>
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
