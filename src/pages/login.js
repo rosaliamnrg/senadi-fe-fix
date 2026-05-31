@@ -24,7 +24,7 @@ export default function Login() {
         // You may need to adapt this depending on how your AuthContext handles token storage
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
-        window.location.href = '/daftarchat'; // redirect to chat or dashboard
+        window.location.href = '/chat'; // redirect to chat or dashboard
       } else {
         setError(data.error || 'Google login failed');
       }
