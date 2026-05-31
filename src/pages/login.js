@@ -124,7 +124,7 @@ export default function Login() {
             </Box>
           </Box>
 
-          <Box sx={{ mt: 2, textAlign: 'center' }}>
+        {/* <Box sx={{ mt: 2, textAlign: 'center' }}>
           <Typography variant="body2" sx={{ fontFamily: 'Epilogue, sans-serif'}}>
             Belum punya akun?{' '}
             <Link href="/register" underline="hover" sx={{ color: '#06344E', fontWeight: 'bold' }}>
@@ -132,7 +132,7 @@ export default function Login() {
             </Link>
           </Typography>
 
-        </Box>
+        </Box> */}
         </Box>
       </Container>
     </Box>
