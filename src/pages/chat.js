@@ -345,7 +345,7 @@ export default function Chat() {
       <AppBar position="static" sx={{ backgroundColor: "#06344E" }}>
         <Toolbar>
           <Box sx={{ flexGrow: 1 }}>
-            <img src="/images/logo.png" style={{ height: 46 }} />
+            <img src="/images/logo.png" style={{ height: 55 }} />
           </Box>
           {verified && (
             <Button
