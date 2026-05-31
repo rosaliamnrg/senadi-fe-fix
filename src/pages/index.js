@@ -88,15 +88,15 @@ export default function Login() {
             </Button>
           </Box>
 
-          <Box sx={{ mt: 2, textAlign: 'center' }}>
+        {/* <Box sx={{ mt: 2, textAlign: 'center' }}>
           <Typography variant="body2" sx={{ fontFamily: 'Epilogue, sans-serif'}}>
             Belum punya akun?{' '}
             <Link href="/register" underline="hover" sx={{ color: '#06344E', fontWeight: 'bold' }}>
               Register disini
             </Link>
           </Typography>
+        </Box> */}
 
-        </Box>
         </Box>
       </Container>
     </Box>
