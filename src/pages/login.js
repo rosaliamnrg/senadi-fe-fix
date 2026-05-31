@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { useAuth } from '../contexts/AuthContext';
 import { Box, Container, TextField, Button, Typography, Alert, Link } from '@mui/material';
 import '@fontsource/inter'; // default
@@ -9,6 +10,32 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const { login } = useAuth();
+  
+  const handleGoogleSuccess = async (credentialResgponse) => {
+    try {
+      // Send token to backend
+      const res = await fetch('http://localhost:5000/api/auth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ credential: credentialResponse.credential }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        // You may need to adapt this depending on how your AuthContext handles token storage
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        window.location.href = '/daftarchat'; // redirect to chat or dashboard
+      } else {
+        setError(data.error || 'Google login failed');
+      }
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
+  const handleGoogleError = () => {
+    setError('Google login failed');
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -22,6 +49,7 @@ export default function Login() {
   };
 
   return (
+    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "GANTI_DENGAN_GOOGLE_CLIENT_ID_ANDA"}>
     <Box 
       sx={{ 
         minHeight: '100vh',
@@ -86,6 +114,14 @@ export default function Login() {
             >
               Login
             </Button>
+            
+            <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center' }}>
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={handleGoogleError}
+                useOneTap
+              />
+            </Box>
           </Box>
 
           <Box sx={{ mt: 2, textAlign: 'center' }}>
@@ -100,5 +136,6 @@ export default function Login() {
         </Box>
       </Container>
     </Box>
+    </GoogleOAuthProvider>
   );
 }
