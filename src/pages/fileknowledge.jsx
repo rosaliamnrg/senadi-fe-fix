@@ -113,13 +113,16 @@ export default function FileKnowledge() {
               </tr>
             </thead>
             <tbody>
-              {files.map((file) => (
-                <tr key={file.id}>
-                  <td>{file.filename}</td>
-                  <td>{file.username}</td>
-                  <td>{formatDate(file.uploaded_at)}</td>
-                </tr>
-              ))}
+              {files.map((file) => {
+                const [id, filename, fileType, uploadedAt, username] = file;
+                return (
+                  <tr key={id}>
+                    <td>{filename}</td>
+                    <td>{username}</td>
+                    <td>{formatDate(uploadedAt)}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         )}
