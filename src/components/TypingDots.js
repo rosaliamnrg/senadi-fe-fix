@@ -24,3 +24,5 @@ function TypingDots() {
     </Box>
   );
 }
+
+export default TypingDots;

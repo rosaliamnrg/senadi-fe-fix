@@ -22,6 +22,7 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ReactMarkdown from "react-markdown";
 import '@fontsource/poppins'; // default
 import '@fontsource/poppins'; // untuk judul
+import TypingDots from "../components/TypingDots";
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
