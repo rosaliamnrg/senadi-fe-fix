@@ -44,7 +44,7 @@ export default function Chat() {
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
-      router.push("/");
+      router.push("/login");
     }
 
     if (!authLoading && isAdmin) {
@@ -85,6 +85,9 @@ export default function Chat() {
             if (data.success) {
               console.log("Chat created successfully with regular endpoint");
               setChatId(data.chat_id);
+
+              localStorage.setItem("chat_id", data.chat_id);
+
               setVerified(false);
               setMessages([]);
               return; // Exit if successful
@@ -131,8 +134,7 @@ export default function Chat() {
           }
 
           const simpleResponse = await fetch(
-            `${
-              process.env.NEXT_PUBLIC_API_URL
+            `${process.env.NEXT_PUBLIC_API_URL
             }/chat/simpleNew?token=${encodeURIComponent(tokenFromStorage)}`,
             { method: "GET" }
           );

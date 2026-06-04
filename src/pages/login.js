@@ -62,35 +62,42 @@ export default function Login() {
 
   return (
     <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || "GANTI_DENGAN_GOOGLE_CLIENT_ID_ANDA"}>
+      {/* Latar belakang */}
       <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#f5f5f5', alignItems: 'center', justifyContent: 'center', p: 2 }}>
         <Container maxWidth="md">
-          <Box sx={{ 
-            display: 'flex', 
-            flexDirection: { xs: 'column', md: 'row' }, 
-            backgroundColor: 'white', 
-            borderRadius: 4, 
+          {/* Kotak utama: flex row */}
+          <Box sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' },
+            backgroundColor: 'white',
+            borderRadius: 4,
             boxShadow: '0 15px 50px rgba(0,0,0,0.1)',
-            overflow: 'hidden'
+            overflow: 'hidden',
           }}>
-            {/* Kiri: Logo Bung Itung */}
-            <Box sx={{ 
-              flex: 1, 
-              background: 'linear-gradient(145deg, #ffffff 0%, #f2f8f8 100%)', // Hint of hijau muda
-              display: 'flex', 
+
+            {/* ── KIRI: Logo & Branding ── */}
+            <Box sx={{
+              flex: 1,
+              background: 'linear-gradient(145deg, #f0f9f9 0%, #e6f4f4 100%)',
+              display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center', 
-              justifyContent: 'center', 
+              alignItems: 'center',
+              justifyContent: 'center',
               p: 6,
               borderRight: { xs: 'none', md: '1px solid #eaeaea' },
               borderBottom: { xs: '1px solid #eaeaea', md: 'none' },
-              position: 'relative'
+              position: 'relative',
             }}>
-              {/* Dekorasi Tema */}
+              {/* Dekorasi */}
               <Box sx={{ position: 'absolute', top: -30, left: -30, width: 120, height: 120, borderRadius: '50%', backgroundColor: '#febd27', opacity: 0.15 }} />
-              
-              <img src="/images/bung-itung.png" alt="Logo Bung Itung" style={{ maxWidth: '85%', objectFit: 'contain', zIndex: 1 }} />
-              
-              <Typography variant="h5" sx={{ mt: 4, fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#28536b', zIndex: 1 }}>
+
+              <img
+                src="/images/bung-itung.png"
+                alt="Bung Itung"
+                style={{ maxWidth: '85%', objectFit: 'contain', zIndex: 1 }}
+              />
+
+              <Typography variant="h5" sx={{ mt: 4, fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#28536b', zIndex: 1, textAlign: 'center' }}>
                 Tanya Bung Itung
               </Typography>
               <Typography variant="body2" sx={{ mt: 1, fontFamily: 'Poppins, sans-serif', color: '#297373', textAlign: 'center', fontWeight: 500, zIndex: 1 }}>
@@ -98,15 +105,15 @@ export default function Login() {
               </Typography>
             </Box>
 
-            {/* Kanan: Form */}
-            <Box sx={{ 
-              flex: 1.2, 
-              p: { xs: 4, md: 6 }, 
+            {/* ── KANAN: Form Login ── */}
+            <Box sx={{
+              flex: 1.2,
+              p: { xs: 4, md: 6 },
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
               position: 'relative',
-              backgroundColor: '#ffffff'
+              backgroundColor: '#ffffff',
             }}>
               <Box sx={{ position: 'absolute', bottom: -40, right: -20, width: 150, height: 150, borderRadius: '50%', backgroundColor: '#297373', opacity: 0.05 }} />
 
@@ -118,7 +125,7 @@ export default function Login() {
               </Typography>
 
               {error && (
-                <Alert severity="error" sx={{ marginBottom: '24px', fontFamily: 'Poppins, sans-serif', borderRadius: '8px', zIndex: 1 }}>
+                <Alert severity="error" sx={{ mb: 3, fontFamily: 'Poppins, sans-serif', borderRadius: '8px' }}>
                   {error}
                 </Alert>
               )}
@@ -131,10 +138,10 @@ export default function Login() {
                   onChange={(e) => setEmail(e.target.value)}
                   margin="normal"
                   variant="outlined"
-                  InputProps={{ sx: { fontFamily: 'Poppins, sans-serif', borderRadius: '8px' } }}
-                  InputLabelProps={{ sx: { fontFamily: 'Poppins, sans-serif' } }}
                   required
                   type="email"
+                  InputProps={{ sx: { fontFamily: 'Poppins, sans-serif', borderRadius: '8px' } }}
+                  InputLabelProps={{ sx: { fontFamily: 'Poppins, sans-serif' } }}
                   sx={{ '& .MuiOutlinedInput-root': { '&.Mui-focused fieldset': { borderColor: '#f68839', borderWidth: '2px' } } }}
                 />
                 <TextField
@@ -145,7 +152,8 @@ export default function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   margin="normal"
                   variant="outlined"
-                  InputProps={{ 
+                  required
+                  InputProps={{
                     sx: { fontFamily: 'Poppins, sans-serif', borderRadius: '8px' },
                     endAdornment: (
                       <InputAdornment position="end">
@@ -160,21 +168,21 @@ export default function Login() {
                     )
                   }}
                   InputLabelProps={{ sx: { fontFamily: 'Poppins, sans-serif' } }}
-                  required
                   sx={{ mt: 2, '& .MuiOutlinedInput-root': { '&.Mui-focused fieldset': { borderColor: '#f68839', borderWidth: '2px' } } }}
                 />
+
                 <Button
                   fullWidth
                   type="submit"
-                  disabled={isLoading}
                   variant="contained"
-                  sx={{ 
-                    mt: 4, 
+                  disabled={isLoading || isGoogleLoading}
+                  sx={{
+                    mt: 4,
                     py: 1.5,
-                    fontFamily: 'Poppins, sans-serif', 
-                    backgroundColor: '#f68839', // Orange
+                    fontFamily: 'Poppins, sans-serif',
+                    backgroundColor: '#f68839',
                     color: 'white',
-                    fontWeight: 'bold', 
+                    fontWeight: 'bold',
                     fontSize: '16px',
                     borderRadius: '8px',
                     textTransform: 'none',
@@ -183,29 +191,23 @@ export default function Login() {
                     '&:hover': {
                       backgroundColor: '#e07629',
                       boxShadow: '0 6px 20px rgba(246, 136, 57, 0.6)',
-                      transform: 'translateY(-2px)'
+                      transform: 'translateY(-2px)',
                     },
-                    '&.Mui-disabled': {
-                      backgroundColor: '#f68839',
-                      opacity: 0.7,
-                      color: 'white'
-                    }
+                    '&.Mui-disabled': { backgroundColor: '#f68839', opacity: 0.7, color: 'white' },
                   }}
                 >
-                  {isLoading ? <CircularProgress size={24} color="inherit" /> : "Login"}
+                  {isLoading ? <CircularProgress size={24} color="inherit" /> : 'Login'}
                 </Button>
-                
-                <Box sx={{ mt: 4, position: 'relative' }}>
+
+                <Box sx={{ mt: 4 }}>
                   <Divider sx={{ mb: 3 }}>
-                    <Typography variant="body2" sx={{ color: '#999', fontFamily: 'Poppins, sans-serif' }}>Atau masuk dengan</Typography>
+                    <Typography variant="body2" sx={{ color: '#999', fontFamily: 'Poppins, sans-serif' }}>
+                      Atau masuk dengan
+                    </Typography>
                   </Divider>
                   <Box sx={{ display: 'flex', justifyContent: 'center', position: 'relative' }}>
-                    {isGoogleLoading && (
-                      <Box sx={{ 
-                        position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, 
-                        display: 'flex', alignItems: 'center', justifyContent: 'center', 
-                        backgroundColor: 'rgba(255,255,255,0.7)', zIndex: 2, borderRadius: '24px' 
-                      }}>
+                    {isGoogleLoading || isLoading && (
+                      <Box sx={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: 'rgba(255,255,255,0.7)', zIndex: 2, borderRadius: '24px' }}>
                         <CircularProgress size={24} sx={{ color: '#297373' }} />
                       </Box>
                     )}
@@ -219,7 +221,9 @@ export default function Login() {
                   </Box>
                 </Box>
               </Box>
+
             </Box>
+
           </Box>
         </Container>
       </Box>
