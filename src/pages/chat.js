@@ -20,8 +20,8 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import WarningIcon from "@mui/icons-material/Warning";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import ReactMarkdown from "react-markdown";
-import '@fontsource/inter'; // default
-import '@fontsource/epilogue'; // untuk judul
+import '@fontsource/poppins'; // default
+import '@fontsource/poppins'; // untuk judul
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
@@ -342,10 +342,20 @@ export default function Chat() {
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-      <AppBar position="static" sx={{ backgroundColor: "#06344E" }}>
+      <AppBar position="static" sx={{ backgroundColor: "#28536b", boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
         <Toolbar>
-          <Box sx={{ flexGrow: 1 }}>
-            <img src="/images/logo.png" style={{ height: 55 }} />
+          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
+            <img src="/images/logo-bps.webp" style={{ height: 25 }} alt="Logo BPS" />
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <i>
+                <Typography variant="body2" sx={{ fontFamily: 'Poppins, sans-serif', color: '#f5f5f5', lineHeight: 1.2 }}>
+                  Tanya Sensus dengan Bung Itung
+                </Typography>
+                <Typography sx={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold', color: 'white', lineHeight: 1.2, letterSpacing: 0.5 }}>
+                  BPS KOTA KUPANG
+                </Typography>
+              </i>
+            </Box>
           </Box>
           {verified && (
             <Button
@@ -377,12 +387,11 @@ export default function Chat() {
       <Box
         sx={{
           flexGrow: 1,
-          p: 2,
+          p: { xs: 2, md: 4 },
           overflowY: "auto",
           bgcolor: "#f5f5f5",
           display: "flex",
           flexDirection: "column",
-          backgroundColor: "#FFFFFF",
         }}
       >
         {messages.length === 0 && !loading && (
@@ -396,10 +405,10 @@ export default function Chat() {
               opacity: 0.7,
             }}
           >
-            <Typography variant="body1" align="center" sx={{ mb: 2 }}>
+            <Typography variant="h5" align="center" sx={{ mb: 2, fontFamily: 'Poppins, sans-serif', fontWeight: 'bold', color: '#28536b' }}>
               Selamat datang, {user?.username || "User"}!
             </Typography>
-            <Typography variant="body2" align="center">
+            <Typography variant="body1" align="center" sx={{ color: '#666', fontFamily: 'Poppins, sans-serif' }}>
               Silakan ketik pesan untuk memulai percakapan dengan bot
             </Typography>
           </Box>
@@ -412,23 +421,33 @@ export default function Chat() {
               display: "flex",
               justifyContent:
                 message.sender === "user" ? "flex-end" : "flex-start",
+              alignItems: "flex-end",
               mb: 2,
+              gap: 1.5,
             }}
           >
+            {message.sender === "bot" && (
+              <Box sx={{ flexShrink: 0, width: 48, height: 48, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <img src="/images/bung-itung.png" alt="Bung Itung" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+              </Box>
+            )}
             <Paper
-              elevation={1}
+              elevation={0}
               sx={{
-                p: 1.5,
-                maxWidth: "70%",
-                bgcolor: message.sender === "user" ? "#D9EDF6" : "#F5F5F5",
-                color: "#000000",
+                p: 2,
+                maxWidth: "75%",
+                bgcolor: message.sender === "user" ? "#297373" : "#ffffff", // Hijau muda / White
+                color: message.sender === "user" ? "#ffffff" : "#000000",
                 position: "relative",
+                borderRadius: message.sender === "user" ? '20px 20px 4px 20px' : '20px 20px 20px 4px',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+                border: message.sender === "bot" ? '1px solid #eee' : 'none'
               }}
             >
               {message.sender === "bot" ? (
                 <ReactMarkdown>{message.text}</ReactMarkdown>
               ) : (
-                <Typography variant="body1">{message.text}</Typography>
+                <Typography variant="body1" sx={{ fontFamily: 'Poppins, sans-serif' }}>{message.text}</Typography>
               )}
 
               {message.verified && (
@@ -469,17 +488,25 @@ export default function Chat() {
             sx={{
               display: "flex",
               justifyContent: "flex-start",
+              alignItems: "flex-end",
               mb: 2,
+              gap: 1.5,
             }}
           >
+            <Box sx={{ flexShrink: 0, width: 48, height: 48, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <img src="/images/bung-itung.png" alt="Bung Itung" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+            </Box>
             <Paper
-              elevation={1}
+              elevation={0}
               sx={{
                 p: 2,
-                bgcolor: "white",
+                bgcolor: "#ffffff",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                borderRadius: '20px 20px 20px 4px',
+                border: '1px solid #eee',
+                boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
               }}
             >
               <CircularProgress size={20} sx={{ mr: 1 }} />
@@ -504,7 +531,7 @@ export default function Chat() {
             placeholder={
               verified
                 ? "Chat telah diverifikasi. Klik tombol Chat Baru untuk memulai percakapan baru"
-                : "Tanyakan apa saja terkait konsep definisi Susenas"
+                : "Tanyakan apa saja terkait konsep definisi Sensus Ekonomi"
             }
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -513,14 +540,17 @@ export default function Chat() {
             size="medium"
             sx={{
               "& .MuiOutlinedInput-root": {
+                borderRadius: '30px',
+                backgroundColor: '#ffffff',
                 "& fieldset": {
-                  borderColor: "#06344e", // Ganti warna border dengan #06344e
+                  borderColor: "#e0e0e0",
                 },
                 "&:hover fieldset": {
-                  borderColor: "#06344e", // Ganti warna border saat hover
+                  borderColor: "#297373", // Hijau muda
                 },
                 "&.Mui-focused fieldset": {
-                  borderColor: "#06344e", // Ganti warna border saat input difokuskan
+                  borderColor: "#f68839", // Orange
+                  borderWidth: '2px'
                 },
               },
             }}
@@ -538,8 +568,20 @@ export default function Chat() {
               )
             }
             sx={{
-              backgroundColor: "#06344e",
-              "&:hover": { backgroundColor: "#052738" },
+              backgroundColor: "#f68839", // Orange
+              borderRadius: '30px',
+              padding: '0 24px',
+              fontWeight: 'bold',
+              textTransform: 'none',
+              boxShadow: '0 4px 14px 0 rgba(246, 136, 57, 0.39)',
+              transition: 'all 0.3s ease',
+              "&:hover": { 
+                backgroundColor: "#e07629",
+                boxShadow: '0 6px 20px rgba(246, 136, 57, 0.6)'
+              },
+              "&.Mui-disabled": {
+                backgroundColor: "#e0e0e0"
+              }
             }}
           >
             Kirim
@@ -565,7 +607,7 @@ export default function Chat() {
       </Box>
       <style jsx global>{`
         * {
-          font-family: 'Inter', sans-serif !important;
+          font-family: 'Poppins', sans-serif !important;
         }
       `}</style>
     </Box>
