@@ -114,7 +114,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('user');
     setToken(null);
     setUser(null);
-    router.push('/');
+    router.push('/login');
   };
 
   const fetchWithAuth = async (url, options = {}) => {
