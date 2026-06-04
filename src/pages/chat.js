@@ -511,8 +511,7 @@ export default function Chat() {
                 boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
               }}
             >
-              <CircularProgress size={20} sx={{ mr: 1 }} />
-              <Typography variant="body2">Bot sedang mengetik...</Typography>
+              <TypingDots />
             </Paper>
           </Box>
         )}
