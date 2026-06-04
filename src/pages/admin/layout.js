@@ -37,7 +37,7 @@ export default function LayoutAdmin({ children }) {
 
   useEffect(() => {
       if (!authLoading && !isAuthenticated) {
-        router.push("/");
+        router.push("/login");
       }
   
       if (!authLoading && !isAdmin) {

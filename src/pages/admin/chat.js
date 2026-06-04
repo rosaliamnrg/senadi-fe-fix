@@ -42,7 +42,7 @@ export default function AdminChat() {
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
-      router.push("/");
+      router.push("/login");
     }
 
     if (!authLoading && !isAdmin) {
