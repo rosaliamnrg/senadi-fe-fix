@@ -345,16 +345,16 @@ export default function Chat() {
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-      <AppBar position="static" sx={{ backgroundColor: "#f68839", boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
+      <AppBar position="static" sx={{ backgroundColor: "#fbfaf6", boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
-            <img src="/images/logo-bps.webp" style={{ height: 25 }} alt="Logo BPS" />
+            <img src="/images/logo-bps.webp" style={{ height: 30 }} alt="Logo BPS" />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <i>
-                <Typography variant="body2" sx={{ fontFamily: 'Poppins, sans-serif', color: '#f5f5f5', lineHeight: 1.2 }}>
+                <Typography variant="body2" sx={{ fontFamily: 'Poppins, sans-serif', color: '#f5f5f5', lineHeight: 1.5 }}>
                   Tanya Sensus dengan Bung Itung
                 </Typography>
-                <Typography sx={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold', color: 'white', lineHeight: 1.2, letterSpacing: 0.5 }}>
+                <Typography sx={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold', color: '#f5f5f5', lineHeight: 1.5, letterSpacing: 0.5 }}>
                   BPS KOTA KUPANG
                 </Typography>
               </i>
