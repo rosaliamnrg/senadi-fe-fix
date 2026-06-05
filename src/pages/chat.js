@@ -358,7 +358,7 @@ export default function Chat() {
                   color: '#fbfaf6',
                   lineHeight: 1.15,
                   letterSpacing: 0.5,
-                  fontSize: '1rem',
+                  fontSize: '0.75rem',
                 }}
               >
                 BADAN PUSAT STATISTIK
@@ -371,7 +371,7 @@ export default function Chat() {
                   color: '#fbfaf6',
                   lineHeight: 1.15,
                   letterSpacing: 0.5,
-                  fontSize: '1rem',
+                  fontSize: '0.75rem',
                 }}
               >
                 KOTA KUPANG
