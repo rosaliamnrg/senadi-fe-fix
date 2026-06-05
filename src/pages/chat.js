@@ -369,7 +369,7 @@ export default function Chat() {
                   fontWeight: 'bold',
                   fontStyle: 'italic',
                   color: '#fbfaf6',
-                  lineHeight: 1.15,
+                  lineHeight: 1.4,
                   letterSpacing: 0.5,
                   fontSize: '0.75rem',
                 }}
