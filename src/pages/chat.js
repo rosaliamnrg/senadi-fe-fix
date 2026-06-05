@@ -347,15 +347,15 @@ export default function Chat() {
     <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
       <AppBar position="static" sx={{ backgroundColor: "#28536b", boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
         <Toolbar>
-          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
-            <img src="/images/logo-bps.webp" style={{ height: 30 }} alt="Logo BPS" />
+          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <img src="/images/logo-bps.webp" style={{ height: 35 }} alt="Logo BPS" />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography className="logo-serif"
                 sx={{
                   fontFamily: 'Georgia, "Times New Roman", serif',
                   fontWeight: 'bold',
                   fontStyle: 'italic',
-                  color: 'white',
+                  color: '#f68839',
                   lineHeight: 1.15,
                   letterSpacing: 0.5,
                   fontSize: '1rem',
@@ -368,7 +368,7 @@ export default function Chat() {
                   fontFamily: 'Georgia, "Times New Roman", serif',
                   fontWeight: 'bold',
                   fontStyle: 'italic',
-                  color: 'white',
+                  color: '#f68839',
                   lineHeight: 1.15,
                   letterSpacing: 0.5,
                   fontSize: '1rem',
