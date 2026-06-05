@@ -350,14 +350,32 @@ export default function Chat() {
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
             <img src="/images/logo-bps.webp" style={{ height: 30 }} alt="Logo BPS" />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <i>
-                <Typography variant="body2" sx={{ fontFamily: 'Poppins, sans-serif', color: '#f5f5f5', lineHeight: 1.5 }}>
-                  Tanya Sensus dengan Bung Itung
-                </Typography>
-                <Typography sx={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold', color: '#f5f5f5', lineHeight: 1.5, letterSpacing: 0.5 }}>
-                  BPS KOTA KUPANG
-                </Typography>
-              </i>
+              <Typography className="logo-serif"
+                sx={{
+                  fontFamily: 'Georgia, "Times New Roman", serif',
+                  fontWeight: 'bold',
+                  fontStyle: 'italic',
+                  color: 'white',
+                  lineHeight: 1.15,
+                  letterSpacing: 0.5,
+                  fontSize: '1rem',
+                }}
+              >
+                BADAN PUSAT STATISTIK
+              </Typography>
+              <Typography className="logo-serif"
+                sx={{
+                  fontFamily: 'Georgia, "Times New Roman", serif',
+                  fontWeight: 'bold',
+                  fontStyle: 'italic',
+                  color: 'white',
+                  lineHeight: 1.15,
+                  letterSpacing: 0.5,
+                  fontSize: '1rem',
+                }}
+              >
+                KOTA KUPANG
+              </Typography>
             </Box>
           </Box>
           {verified && (
@@ -610,6 +628,9 @@ export default function Chat() {
       <style jsx global>{`
         * {
           font-family: 'Poppins', sans-serif !important;
+        }
+        .logo-serif {
+          font-family: Georgia, 'Times New Roman', serif !important;
         }
       `}</style>
     </Box>
