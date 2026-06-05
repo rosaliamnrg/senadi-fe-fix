@@ -348,7 +348,7 @@ export default function Chat() {
       <AppBar position="static" sx={{ backgroundColor: "#28536b", boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <img src="/images/logo-bps.webp" style={{ height: 35 }} alt="Logo BPS" />
+            <img src="/images/logo-bps.webp" style={{ height: 28 }} alt="Logo BPS" />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography className="logo-serif"
                 sx={{
